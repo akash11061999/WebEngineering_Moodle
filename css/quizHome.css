@@ -1,0 +1,72 @@
+.center {
+  margin: auto;
+  width: 12%;
+  padding: 0%;
+}
+.c {
+  margin:auto;
+  width: 40%;
+  padding: 0%;
+}
+div.sticky {
+  position: sticky;
+  background-color:#FF0000;
+  font-size: 100%;
+  margin: auto;
+}
+.buttonHolder {
+  text-align: center;
+}
+.btn1 {
+	position: absolute;
+	left: 47%;
+	top: 60%;
+}
+.btn2 {
+	position: absolute;
+	left: 48%;
+	top: 65%;
+}
+.btn3 {
+	position: absolute;
+	left: 47%;
+	top: 70%;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+
