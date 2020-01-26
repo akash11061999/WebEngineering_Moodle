@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/studentHome.css">
+
+    <!-- Bootstrap Support libraries-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../js/studentHome.js"></script>
+    <!-- /Bootstrap Support libraries-->
+    <title>
+        Web Engineering
+    </title>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Moodle</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">All courses</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Courses Enrolled</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Grades</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom text-white">
+                <button class="btn btn-light hambutton" id="menu-toggle">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+                <h3>Moodle</h3>
+                <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav-item nav-link text-white">Logout</a>
+                </div>
+            </nav>
+
+            <div class="container-fluid cbox">
+                <div class="row">
+                    <h2>Courses Enrolled</h2>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Web Engineering
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Database Management System
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Distributed Computing
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Mobile Computing
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Compiler Design
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid cbox">
+                <div class="row">
+                    <h2>Pending Tasks</h2>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Database Management System Assignment-1
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Distributed Computing Assignment-1
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Web Engineering Quiz-1
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / Page Content -->
+
+    </div>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+
+</html>
