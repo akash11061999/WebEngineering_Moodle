@@ -9,18 +9,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/loginPage.css">
+    <script src="../js/loginPage.js"></script>
 
 </head>
 
 <body>
     <div class="login-form">
-        <form action="./studentHome.html" method="post">
-            <h2 class="text-center">Log in</h2>
+        <form name="studentLogin" action="./studentHome.html" method="post">
+            <h2 class="text-center">Student Log in</h2>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Enrollment no." required="required">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
+                <input type="password" name="password" class="form-control" placeholder="Password" onblur="validatePassword()" required="required">
             </div>
             <div class="form-group">
                 <a href="../html/studentHome.html"><button type="submit" class="btn btn-primary btn-block">Log in</button></a>
@@ -31,6 +32,9 @@
                 </label>
             </div>
         </form>
+        <div class="form-group">
+            <a href="../html/teacherLogin.html"><button type="submit" class="btn btn-primary btn-block">Log in as teacher</button></a>
+        </div>
     </div>
 </body>
 

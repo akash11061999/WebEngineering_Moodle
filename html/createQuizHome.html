@@ -1,74 +1,126 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href= "../css/createQuizHome.css">
+  <link rel="stylesheet" href="../css/createQuizHome.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Bootstrap Support libraries-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- /Bootstrap Support libraries-->
 </head>
+
 <body>
+  <div class="d-flex" id="wrapper">
 
-
-<div class="container">
-  <form action="/action_page.php">
-  <div class="row">
-    <div class="col-25">
-      <label for="qname">Quiz-Name :</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="qname" name="quizname" placeholder="Quiz name is.....">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="qdate">Quiz-Date :</label>
-    </div>
-    <div class="col-75">
-      <input type="date" id="qdate" name="quizdate" placeholder="">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="qduration">Quiz-Duration :</label>
-    </div>
-
-      <div class="col-20">
-  <input id='h' name='h' type='number' min='0' max='24'>
-  <label for='h'>h</label>
-  </div>
-    <div class="col-20">
-  <input id='m' name='m' type='number' min='0' max='59'>
-  <label for='m'>m</label>
-  </div>
-    <div class="col-20">
-  <input id='s' name='s' type='number' min='0' max='59'>
-  <label for='s'>s</label>
-  </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="stime">Start-Time :</label>
-      </div>
-      <div class="col-75">
-        <input type="time" id="stime" name="starttime" placeholder="">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Moodle</div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">All courses</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Courses Teaching</a>
+        <a href="./createQuizHome.html" class="list-group-item list-group-item-action bg-light">Create Quiz</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">View Past Quiz</a>
       </div>
     </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="etime">End-Time :</label>
-      </div>
-      <div class="col-75">
-        <input type="time" id="etime" name="endtime" placeholder="">
-      </div>
+    <!-- /#sidebar-wrapper -->
+
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom text-white">
+        <button class="btn btn-light hambutton" id="menu-toggle">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+        <h3>Moodle</h3>
+        <div class="navbar-nav ml-auto">
+          <a href="#" class="nav-item nav-link text-white">Logout</a>
+        </div>
+      </nav>
     </div>
-    <div class="row">
+    <div class="container">
+      <form action="./createQuizQuestions.html">
+        <div class="row">
+          <div class="col-3">
+            <label for="qname">Quiz-Name :</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="qname" name="quizname" placeholder="Quiz name is.....">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="qdate">Quiz-Date :</label>
+          </div>
+          <div class="col-75">
+            <input type="date" id="qdate" name="quizdate" placeholder="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="qduration">Quiz-Duration :</label>
+          </div>
 
-      <button type="button" onclick="window.location.href='quizPage2.html'">
-   Enter Questions
-</button>
+          <div class="col-20">
+            <input id='h' name='h' type='number' min='0' max='24'>
+            <label for='h'>h</label>
+          </div>
+          <div class="col-20">
+            <input id='m' name='m' type='number' min='0' max='59'>
+            <label for='m'>m</label>
+          </div>
+          <div class="col-20">
+            <input id='s' name='s' type='number' min='0' max='59'>
+            <label for='s'>s</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="stime">Start-Time :</label>
+          </div>
+          <div class="col-75">
+            <input type="time" id="stime" name="starttime" placeholder="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="etime">End-Time :</label>
+          </div>
+          <div class="col-75">
+            <input type="time" id="etime" name="endtime" placeholder="">
+          </div>
+        </div>
+        <div class="row">
 
+          <button type="submit">
+            Enter Questions
+          </button>
+
+        </div>
+
+
+      </form>
     </div>
+  </div>
 
-
-  </form>
-</div>
-
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
+
 </html>
