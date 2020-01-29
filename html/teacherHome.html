@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/quizHome.css">
+    <link rel="stylesheet" href="../css/studentHome.css">
 
     <!-- Bootstrap Support libraries-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -18,10 +18,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="../js/quizHome.js"></script>
+    <script src="../js/studentHome.js"></script>
     <!-- /Bootstrap Support libraries-->
     <title>
-        Quiz Home
+        Teacher's Home Page
     </title>
 </head>
 
@@ -34,8 +34,9 @@
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">All courses</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Courses Enrolled</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">Grades</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Courses Teaching</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Create Quiz</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">View Past Quiz</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -53,23 +54,55 @@
                 </div>
             </nav>
 
-            <div class="container-fluid obox">
+            <div class="container-fluid cbox">
                 <div class="row">
-                    <h2>Web Engineering Quiz-1</h2>
+                    <h2>Courses Teaching</h2>
                 </div>
                 <div class="row">
-                    <div class="alert alert-info container-fluid ibox" role="alert">
-                        <p>Scheduled On  : 29-Jan-2020</p> 
-                        <p>Scheduled Time : 4:00 PM</p>
-                        <p>Duration : 45 Min</p>
-                        <div class="input-group input-group-sm mb-2">
-                          <input type="text" placeholder="Enter Quiz Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                        </div>
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Web Engineering
                     </div>
                 </div>
                 <div class="row">
-                  <button type="button" onclick="window.location.href='quizPage.html'" class="btn btn-dark sbtn">Begin Quiz</button>
-
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Database Management System
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Distributed Computing
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Mobile Computing
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-secondary container-fluid" role="alert">
+                        Compiler Design
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid cbox">
+                <div class="row">
+                    <h2>Pending Tasks</h2>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Database Management System Assignment-1
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Distributed Computing Assignment-1
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-warning container-fluid" role="alert">
+                        Web Engineering Quiz-1
+                    </div>
                 </div>
             </div>
         </div>

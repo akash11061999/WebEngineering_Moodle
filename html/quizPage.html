@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/quizPage.css">
+
+    <!-- Bootstrap Support libraries-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="../js/quizPage.js"></script>
+    <!-- /Bootstrap Support libraries-->
+    <title>
+        Quiz
+    </title>
+</head>
+
+<body onload="populateQuiz()">
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Moodle</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">All courses</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Courses Enrolled</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Grades</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom text-white">
+                <button class="btn btn-light hambutton" id="menu-toggle">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+                <h3>Moodle</h3>
+                <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav-item nav-link text-white">Logout</a>
+                </div>
+            </nav>
+
+            <div class="container-fluid obox" id="quizBody">
+                <!-- <div class="row">
+                    <h2>Web Engineering Quiz-1</h2>
+                </div>
+                <div class="row">
+                    <div class="alert alert-info container-fluid ibox" role="alert">
+                        <div class="row">
+                            <div class="col-sm">
+                                1. W3C stands for _________ .
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample1"
+                                    name="groupOfDefaultRadios">
+                                <label class="custom-control-label" for="defaultGroupExample1">World Wide Web Consortium</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample2"
+                                    name="groupOfDefaultRadios">
+                                <label class="custom-control-label" for="defaultGroupExample2">World Wide Web Collaboration</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample3"
+                                    name="groupOfDefaultRadios">
+                                <label class="custom-control-label" for="defaultGroupExample3">World Wide Web Community</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultUnchecked"
+                                    name="groupOfDefaultRadios">
+                                <label class="custom-control-label" for="defaultUnchecked">None of these</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="alert alert-info container-fluid ibox" role="alert">
+                        <div class="row">
+                            <div class="col-sm">
+                                2. HTML stands for _________ .
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample4"
+                                    name="groupOfDefaultRadio">
+                                <label class="custom-control-label" for="defaultGroupExample4">Hyper Text Markup Language</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample5"
+                                    name="groupOfDefaultRadio">
+                                <label class="custom-control-label" for="defaultGroupExample5">High Text Markup Language</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample6"
+                                    name="groupOfDefaultRadio">
+                                <label class="custom-control-label" for="defaultGroupExample6">Hyper Tabular Markup Language</label>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="defaultGroupExample7"
+                                    name="groupOfDefaultRadio">
+                                <label class="custom-control-label" for="defaultGroupExample7">None of these</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- / Page Content -->
+
+    </div>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+
+</html>
