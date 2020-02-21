@@ -21,6 +21,9 @@
         font-weight: bold;
     }
 body {
-    background-color:aquamarine;
+    background-color: rgb(202, 207, 207);
 }
 
+.btn-primary{
+    background-color: rgb(90, 88, 88);
+}

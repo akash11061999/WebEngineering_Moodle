@@ -48,79 +48,78 @@
           <a href="#" class="nav-item nav-link text-white">Logout</a>
         </div>
       </nav>
+      <div class="container">
+        <form action="./createQuizQuestions.html">
+          <div class="row">
+            <div class="col-3">
+              <label for="qname">Quiz-Name :</label>
+            </div>
+            <div class="col-9">
+              <input type="text" id="qname" name="quizname" placeholder="Quiz name is.....">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <label for="qdate">Quiz-Date :</label>
+            </div>
+            <div class="col-9">
+              <input type="date" id="qdate" name="quizdate" placeholder="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <label for="qduration">Quiz-Duration :</label>
+            </div>
+
+            <div class="col-20">
+              <input id='h' name='h' type='number' min='0' max='24'>
+              <label for='h'>h</label>
+            </div>
+            <div class="col-20">
+              <input id='m' name='m' type='number' min='0' max='59'>
+              <label for='m'>m</label>
+            </div>
+            <div class="col-20">
+              <input id='s' name='s' type='number' min='0' max='59'>
+              <label for='s'>s</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <label for="stime">Start-Time :</label>
+            </div>
+            <div class="col-9">
+              <input type="time" id="stime" name="starttime" placeholder="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <label for="etime">End-Time :</label>
+            </div>
+            <div class="col-9">
+              <input type="time" id="etime" name="endtime" placeholder="">
+            </div>
+          </div>
+          <div class="row">
+
+            <button type="submit" class="nxtbtn">
+              Enter Questions
+            </button>
+
+          </div>
+
+
+        </form>
+      </div>
     </div>
-    <div class="container">
-      <form action="./createQuizQuestions.html">
-        <div class="row">
-          <div class="col-3">
-            <label for="qname">Quiz-Name :</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="qname" name="quizname" placeholder="Quiz name is.....">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <label for="qdate">Quiz-Date :</label>
-          </div>
-          <div class="col-75">
-            <input type="date" id="qdate" name="quizdate" placeholder="">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <label for="qduration">Quiz-Duration :</label>
-          </div>
 
-          <div class="col-20">
-            <input id='h' name='h' type='number' min='0' max='24'>
-            <label for='h'>h</label>
-          </div>
-          <div class="col-20">
-            <input id='m' name='m' type='number' min='0' max='59'>
-            <label for='m'>m</label>
-          </div>
-          <div class="col-20">
-            <input id='s' name='s' type='number' min='0' max='59'>
-            <label for='s'>s</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <label for="stime">Start-Time :</label>
-          </div>
-          <div class="col-75">
-            <input type="time" id="stime" name="starttime" placeholder="">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <label for="etime">End-Time :</label>
-          </div>
-          <div class="col-75">
-            <input type="time" id="etime" name="endtime" placeholder="">
-          </div>
-        </div>
-        <div class="row">
-
-          <button type="submit">
-            Enter Questions
-          </button>
-
-        </div>
-
-
-      </form>
-    </div>
-  </div>
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+    <!-- Menu Toggle Script -->
+    <script>
+      $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
 </body>
 
 </html>
