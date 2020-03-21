@@ -1,19 +1,30 @@
 package com.moodle.moodledataSQL.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Table(name="Student")
 @Entity
 public class Student {
 	
 	@Id
 	String enrollmentNumber;
-
+	
+	
 	@Column(nullable=false)
 	String name;
 	
+	
+	
 	String emailID;
+	
+
 	String contactNo;
 	
 	@Column(nullable=false)
@@ -31,6 +42,21 @@ public class Student {
 	@Column(nullable=false)
 	String batch;
 	
+	 @ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "deptId",nullable=false)        //change
+	    public Department department;
+
+	
+	
+	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	public String getEnrollmentNumber() {
 		return enrollmentNumber;
 	}
@@ -102,5 +128,8 @@ public class Student {
 	public void setBatch(String batch) {
 		this.batch = batch;
 	}
+	
+	
+	
 	
 }
