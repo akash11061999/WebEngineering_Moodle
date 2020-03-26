@@ -26,7 +26,14 @@ public class Teacher {
 		return teacherId;
 	}
 
-	public void setTeacherId(String teacherId) {
+	@Column(nullable=false)
+	String department;
+	
+	public String getteacherId() {
+		return teacherId;
+	}
+
+	public void setteacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
 
@@ -54,7 +61,6 @@ public class Teacher {
 		this.contactNo = contactNo;
 	}
 
-
 	public Department getDepartment() {
 		return department;
 	}
@@ -70,6 +76,14 @@ public class Teacher {
 //	public void setDepartment(String department) {
 //		this.department = department;
 //	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 
 	
 }

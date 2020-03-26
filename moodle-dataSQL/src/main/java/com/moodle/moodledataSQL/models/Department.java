@@ -14,6 +14,9 @@ public class Department implements Serializable {
 	
 	@Column(nullable=false)  
 	String departmentName;
+  
+  @Column(nullable=false)  
+	Date creationDate;
 
 	public String getDepartmentId() {
 		return departmentId;
@@ -30,12 +33,14 @@ public class Department implements Serializable {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
+}
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	
-	
-
-
-
-	
-
-
 }
