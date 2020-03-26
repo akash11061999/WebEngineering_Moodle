@@ -2,6 +2,7 @@ package com.moodle.moodledataSQL.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Column;
 
 @Entity
@@ -16,6 +17,15 @@ public class Teacher {
 	String emailID;
 	String contactNo;
 	
+	@ManyToOne
+	public Department department;
+	
+	
+
+	public String getTeacherId() {
+		return teacherId;
+	}
+
 	@Column(nullable=false)
 	String department;
 	
@@ -50,6 +60,22 @@ public class Teacher {
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+//	public String getDepartment() {
+//		return department;
+//	}
+//
+//	public void setDepartment(String department) {
+//		this.department = department;
+//	}
 
 	public String getDepartment() {
 		return department;

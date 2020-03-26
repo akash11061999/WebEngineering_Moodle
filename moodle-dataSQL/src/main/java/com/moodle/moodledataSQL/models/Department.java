@@ -1,23 +1,22 @@
 package com.moodle.moodledataSQL.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Department {
+public class Department implements Serializable {
 	
-	@GeneratedValue( strategy=GenerationType.AUTO )
-
 	@Id
-	private String departmentId;
+	String departmentId;
 	
-	private String departmentName;
-	
-	@Column(nullable=false)
-	private String creationDate;
+	@Column(nullable=false)  
+	String departmentName;
+  
+  @Column(nullable=false)  
+	Date creationDate;
 
 	public String getDepartmentId() {
 		return departmentId;
@@ -34,7 +33,7 @@ public class Department {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-
+}
 	public String getCreationDate() {
 		return creationDate;
 	}
@@ -45,4 +44,3 @@ public class Department {
 
 	
 }
-
