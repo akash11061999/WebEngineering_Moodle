@@ -6,23 +6,51 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+@IdClass(QuizMcqQuestionId.class)
 public class QuizMcqQuestions implements Serializable {
-	
+
 	@Id
-	int quizMcqQuestionId;
-  
-	// or both id+quiz  id will form composite primary key
-	
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Quiz quiz;
-	
-	
+	private int mcqQuestionId;
+
+	@Id
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name = "quizMcqQuestionId", nullable=false)
+	private Quiz quiz;
+
+	@Column(nullable=false)
+	private String sectionName;
+
+	@Column(nullable=false)
+	private int questionNo;
+
+	@Column(nullable=false)
+	private String question;
+
+	@Column(nullable=false)
+	private String optionA;
+
+	@Column(nullable=false)
+	private String optionB;
+
+	@Column(nullable=false)
+	private String optionC;
+
+	@Column(nullable=false)
+	private String optionD;
+
+	@Column(nullable=false)
+	private String correctAns;
+
+	@Column(nullable=false)
+	private Date creationDate;
+
 	public Quiz getQuiz() {
 		return quiz;
 	}
@@ -31,48 +59,30 @@ public class QuizMcqQuestions implements Serializable {
 		this.quiz = quiz;
 	}
 
-	@Column(nullable=false)
-	String sectionName;
-	
-	@Column(nullable=false)
-	int questionNo;
-	
-	@Column(nullable=false)
-	String question;
-	
-	@Column(nullable=false)
-	String optionA;
-	
-	@Column(nullable=false)
-	String optionB;
-	
-	@Column(nullable=false)
-	String optionC;
-	
-	@Column(nullable=false)
-	String optionD;
-	
-	@Column(nullable=false)
-	String correctAns;
-	
-	@Column(nullable=false)
-	Date creationDate;
+	public QuizMcqQuestions() {
 
-	public int getQuizMcqQuestionId() {
-		return quizMcqQuestionId;
 	}
 
-	public void setQuizMcqQuestionId(int quizMcqQuestionId) {
-		this.quizMcqQuestionId = quizMcqQuestionId;
+	public QuizMcqQuestions( int mcqQuestionId, String sectionName, int questionNo, String question, String optionA, String optionB, String optionC, String optionD, String correctAns, Date creationDate ) {
+		this.mcqQuestionId = mcqQuestionId;
+		this.sectionName = sectionName;
+		this.questionNo = questionNo;
+		this.question = question;
+		this.optionA = optionA;
+		this.optionB = optionB;
+		this.optionC = optionC;
+		this.optionD = optionD;
+		this.correctAns = correctAns;
+		this.creationDate = creationDate;
+	}
+	
+	public int getMcqQuestionId() {
+		return mcqQuestionId;
 	}
 
-//	public int getQuizId() {
-//		return quizId;
-//	}
-//
-//	public void setQuizId(int quizId) {
-//		this.quizId = quizId;
-//	}
+	public void setMcqQuestionId(int mcqQuestionId) {
+		this.mcqQuestionId = mcqQuestionId;
+	}
 
 	public String getSectionName() {
 		return sectionName;
@@ -145,9 +155,9 @@ public class QuizMcqQuestions implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
+
+
 
 
 }

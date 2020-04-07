@@ -6,56 +6,51 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table
 @Entity
+@IdClass(AssignmentSubmissionId.class)
 public class AssignmentSubmission implements Serializable {
 	
-	//or both these together as primary key
+	@Id
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "assignmentId",nullable=false) 
+	private Assignment assignment;
 	
 	@Id
-	String assignment_id;
-	
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "enrollmentNumber",nullable=false) 
+	private Student student;
+
 	@Column(nullable=false)
-	String enrollmentNumber;
+	private String submissionLink;
 	
-	public String getAssignment_id() {
-		return assignment_id;
+	public AssignmentSubmission() {
+		
 	}
-
-	public void setAssignment_id(String assignment_id) {
-		this.assignment_id = assignment_id;
-	}
-
-	@Column(nullable=false)  //foreign key
-	String submissionLink;
-
-//	public String getAssignment_id() {
-//		return assignment_id;
-//	}
-//
-//	public void setAssignment_id(String assignment_id) {
-//		this.assignment_id = assignment_id;
-//	}
-
 	
-
-//	public int getAssignmentId() {
-//		return assignmentId;
-//	}
-//
-//	public void setAssignmentId(int assignmentId) {
-//		this.assignmentId = assignmentId;
-//	}
-
-	public String getEnrollmentNumber() {
-		return enrollmentNumber;
+	public AssignmentSubmission(String submissionLink) {
+		this.submissionLink = submissionLink;
+	}
+	
+	public Assignment getAssignment() {
+		return assignment;
 	}
 
-	public void setEnrollmentNumber(String enrollmentNumber) {
-		this.enrollmentNumber = enrollmentNumber;
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public String getSubmissionLink() {
@@ -66,6 +61,4 @@ public class AssignmentSubmission implements Serializable {
 		this.submissionLink = submissionLink;
 	}
 	
-	
-
 }

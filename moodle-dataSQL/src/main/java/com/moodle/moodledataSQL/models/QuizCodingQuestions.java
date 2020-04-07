@@ -6,51 +6,73 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
+@IdClass(QuizCodingQuestionId.class)
 public class QuizCodingQuestions implements Serializable{
-	
-	
+
+
 	@Id
-	int quizCodingQuestionId;
-  
+	private int codingQuestionId;
+
 	// or both id+quiz  id will form composite primary key
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Quiz quiz;
-	
-	
-	@Column(nullable=false)
-	String sectionName;
-	
-	@Column(nullable=false)
-	int questionNo;
-	
-	@Column(nullable=false)
-	String question;
-	
-	@Column(nullable=false)
-	String inputFormat;
-	
-	@Column(nullable=false)
-	String outputFormat;
-	
-	@Column(nullable=false)
-	String constraints;
-	
-	@Column(nullable=false)
-	String inputTestCases;
-	
+
+	@Id
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name = "quiz_CodingQuestionId", nullable=false)
+	private Quiz quiz;
+
 
 	@Column(nullable=false)
-	String outputTestCases;
-	
-	@Column(nullable=false)   // not a foreign key but will be fetched from quiz table
-	  Date creationDate;
+	private String sectionName;
 
+	@Column(nullable=false)
+	private int questionNo;
+
+	@Column(nullable=false)
+	private String question;
+
+	@Column(nullable=false)
+	private String inputFormat;
+
+	@Column(nullable=false)
+	private String outputFormat;
+
+	@Column(nullable=false)
+	private String constraints;
+
+	@Column(nullable=false)
+	private String inputTestCases;
+
+
+	@Column(nullable=false)
+	private String outputTestCases;
+
+	@Column(nullable=false)
+	private Date creationDate;
+
+	public QuizCodingQuestions() {
+
+	}
 	
+	public QuizCodingQuestions(int codingQuestionId, String sectionName, int questionNo, String question, String inputFormat, String outputFormat, String constraints, String inputTestCases, String outputTestCases, Date creationDate){ 
+		this.codingQuestionId = codingQuestionId;
+		this.sectionName = sectionName;
+		this.questionNo = questionNo;
+		this.question = question;
+		this.inputFormat = inputFormat;
+		this.outputFormat = outputFormat;
+		this.constraints = constraints;
+		this.inputTestCases = inputTestCases;
+		this.outputTestCases = outputTestCases;
+		this.creationDate = creationDate;
+	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -59,10 +81,6 @@ public class QuizCodingQuestions implements Serializable{
 		this.creationDate = creationDate;
 	}
 
-	public void setQuizCodingQuestionId(int quizCodingQuestionId) {
-		this.quizCodingQuestionId = quizCodingQuestionId;
-	}
-	
 	public Quiz getQuiz() {
 		return quiz;
 	}
@@ -79,25 +97,18 @@ public class QuizCodingQuestions implements Serializable{
 		this.constraints = constraints;
 	}
 
-	public int getQuizCodingQuestionId() {
-		return quizCodingQuestionId;
-	}
-
-
-//	public int getQuizId() {
-//		return quizId;
-//	}
-//
-//
-//	public void setQuizId(int quizId) {
-//		this.quizId = quizId;
-//	}
-
-
 	public String getSectionName() {
 		return sectionName;
 	}
 
+
+	public int getCodingQuestionId() {
+		return codingQuestionId;
+	}
+
+	public void setCodingQuestionId(int codingQuestionId) {
+		this.codingQuestionId = codingQuestionId;
+	}
 
 	public void setSectionName(String sectionName) {
 		this.sectionName = sectionName;
@@ -174,8 +185,8 @@ public class QuizCodingQuestions implements Serializable{
 	}
 
 
-	
 
-	
+
+
 
 }

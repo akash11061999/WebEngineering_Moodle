@@ -5,27 +5,50 @@ package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Resource implements Serializable {
-	
+
 	@Id
-	String resourceId;  //String?
-	
+	private String resourceId;
+
 	@Column(nullable=false)
-	String resourceName;
-	
-	@Column(nullable=false)  //foreign key
-	String subjectId;
-	
-	@Column(nullable=false)  // can be in 2 char,foreign key? or in(b1,b2,b3,b4)
-	String batch;
-	
+	private String resourceName;
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "subjectId",nullable=false)    
+	private Subject subject;
+
+	@Column(nullable=false) 
+	private String batch;
+
 	@Column(nullable=false)
-	String resourceLink;
+	private String resourceLink;
+
+	public Resource() {
+
+	}
+
+	public Resource(String resourceId, String resourceName, String batch, String resourceLink) {
+		this.resourceId = resourceId;
+		this.resourceName = resourceName;
+		this.batch = batch;
+		this.resourceLink = resourceLink;
+	}
+
+	public Subject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
 
 	public String getResourceId() {
 		return resourceId;
@@ -43,14 +66,6 @@ public class Resource implements Serializable {
 		this.resourceName = resourceName;
 	}
 
-	public String getSubjectId() {
-		return subjectId;
-	}
-
-	public void setSubjectId(String subjectId) {
-		this.subjectId = subjectId;
-	}
-
 	public String getBatch() {
 		return batch;
 	}
@@ -66,8 +81,5 @@ public class Resource implements Serializable {
 	public void setResourceLink(String resourceLink) {
 		this.resourceLink = resourceLink;
 	}
-	
-	
-	
 
 }

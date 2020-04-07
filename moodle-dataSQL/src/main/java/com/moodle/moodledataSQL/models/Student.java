@@ -1,54 +1,72 @@
 package com.moodle.moodledataSQL.models;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name="Student")
 @Entity
 public class Student {
-	
+
 	@Id
-	String enrollmentNumber;
-	
-	
-	@Column(nullable=false)
-	String name;
-	
-	
-	
-	String emailID;
-	
+	private String enrollmentNumber;
 
-	String contactNo;
-	
 	@Column(nullable=false)
-	String branch;
-	
-	@Column(nullable=false)
-	int year;
-	
-	@Column(nullable=false)
-	int semester;
-	
-	@Column(nullable=false)
-	String course;
-	
-	@Column(nullable=false)
-	String batch;
-	
-	 @ManyToOne(cascade = CascadeType.ALL)
-	    @JoinColumn(name = "deptId",nullable=false)        //change
-	    public Department department;
+	private String name;
 
-	
-	
-	
+	private String emailId;
+
+	private String contactNo;
+
+	@Column(nullable=false)
+	private String branch;
+
+	@Column(nullable=false)
+	private int year;
+
+	@Column(nullable=false)
+	private int semester;
+
+	@Column(nullable=false)
+	private String course;
+
+	@Column(nullable=false)
+	private String batch;
+
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name = "studentDeptId",nullable=false)   
+	private Department department;
+
+	@OneToMany(mappedBy = "student", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Set<AssignmentSubmission> assignmentSubmission;
+
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuizSubmissions> quizSubmissions;
+
+	public Student() {
+
+	}
+
+	public Student(String enrollmentNumber, String name, String emailId, String contactNo, String branch, int year, int semester, String course, String batch) {
+		this.enrollmentNumber = enrollmentNumber;
+		this.name =  name;
+		this.emailId = emailId;
+		this.contactNo = contactNo;
+		this.branch = branch;
+		this.year = year;
+		this.semester = semester;
+		this.course = course;
+		this.batch = batch;		
+	}
+
 	public Department getDepartment() {
 		return department;
 	}
@@ -61,11 +79,27 @@ public class Student {
 		return enrollmentNumber;
 	}
 
+	public Set<AssignmentSubmission> getAssignmentSubmission() {
+		return assignmentSubmission;
+	}
+
+	public void setAssignmentSubmission(Set<AssignmentSubmission> assignmentSubmission) {
+		this.assignmentSubmission = assignmentSubmission;
+	}
+
+	public Set<QuizSubmissions> getQuizSubmissions() {
+		return quizSubmissions;
+	}
+
+	public void setQuizSubmissions(Set<QuizSubmissions> quizSubmissions) {
+		this.quizSubmissions = quizSubmissions;
+	}
+
 	public void setEnrollmentNumber(String enrollmentNumber) {
 		this.enrollmentNumber = enrollmentNumber;
 	}
 
-	public String getName() {
+	public String getName(){
 		return name;
 	}
 
@@ -73,12 +107,12 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getEmailID() {
-		return emailID;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmailID(String emailID) {
-		this.emailID = emailID;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getContactNo() {
@@ -128,8 +162,5 @@ public class Student {
 	public void setBatch(String batch) {
 		this.batch = batch;
 	}
-	
-	
-	
-	
+
 }

@@ -3,13 +3,16 @@ package com.moodle.moodledataSQL.models;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Quiz implements Serializable {
@@ -19,7 +22,8 @@ public class Quiz implements Serializable {
 	@Column(nullable=false)
 	String name;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@JoinColumn(name = "quizSubjectId",nullable=false)
 	public Subject subject;
 	
 	@Column(nullable=false)
@@ -43,12 +47,61 @@ public class Quiz implements Serializable {
 	@Column(nullable=false)
 	Date creationDate;
 	
+	@OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuizMcqQuestions> quizMcqQuestions;
+	
+	@OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuizCodingQuestions> quizCodingQuestions;
+	
+	@OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuizSubmissions> quizSubmissions;
+	
+	public Quiz() {
+		
+	}
+	
+	public Quiz(String quizId, String name, String password, String batch, Time startTime, Time endTime, Time duration, Date scheduledDate, Date creationDate) {
+		this.quizId = quizId;
+		this.name = name;
+		this.password = password;
+		this.batch = batch;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.duration = duration;
+		this.scheduledDate = scheduledDate;
+		this.creationDate = creationDate;
+	}
+	
 	public String getQuizId() {
 		return quizId;
 	}
 
 	public void setQuizId(String quizId) {
 		this.quizId = quizId;
+	}
+
+	public Set<QuizMcqQuestions> getQuizMcqQuestions() {
+		return quizMcqQuestions;
+	}
+
+	public void setQuizMcqQuestions(Set<QuizMcqQuestions> quizMcqQuestions) {
+		this.quizMcqQuestions = quizMcqQuestions;
+	}
+
+	public Set<QuizCodingQuestions> getQuizCodingQuestions() {
+		return quizCodingQuestions;
+	}
+
+	public void setQuizCodingQuestions(Set<QuizCodingQuestions> quizCodingQuestions) {
+		this.quizCodingQuestions = quizCodingQuestions;
+	}
+
+	public Set<QuizSubmissions> getQuizSubmissions() {
+		return quizSubmissions;
+	}
+
+	public void setQuizSubmissions(Set<QuizSubmissions> quizSubmissions) {
+		this.quizSubmissions = quizSubmissions;
 	}
 
 	public String getName() {
@@ -66,14 +119,6 @@ public class Quiz implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-//	public String getSubject() {
-//		return subject;
-//	}
-//
-//	public void setSubject(String subject) {
-//		this.subject = subject;
-//	}
 
 	public String getPassword() {
 		return password;
@@ -130,12 +175,5 @@ public class Quiz implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
-	
-
-	
-	
-	
 
 }
