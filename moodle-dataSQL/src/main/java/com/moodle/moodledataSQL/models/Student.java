@@ -1,5 +1,6 @@
 package com.moodle.moodledataSQL.models;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-public class Student {
+public class Student extends Auditing implements Serializable {
 
 	@Id
 	private String enrollmentNumber;

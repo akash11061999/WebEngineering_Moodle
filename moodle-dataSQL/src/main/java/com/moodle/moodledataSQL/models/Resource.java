@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Resource implements Serializable {
+public class Resource extends Auditing implements Serializable {
 
 	@Id
 	private String resourceId;

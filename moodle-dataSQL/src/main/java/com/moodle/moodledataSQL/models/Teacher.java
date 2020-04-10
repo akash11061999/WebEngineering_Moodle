@@ -11,11 +11,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 @Entity
-public class Teacher implements Serializable {
+public class Teacher extends Auditing implements Serializable {
 
 	@Id
 	private String teacherId;
