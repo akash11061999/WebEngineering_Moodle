@@ -1,6 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @IdClass(QuizSubmissionsId.class)
@@ -36,6 +40,9 @@ public class QuizSubmissions implements Serializable {
 
 	@Column(nullable = false)
 	private String batch;
+	
+	@CreationTimestamp  
+	private Timestamp creationDate;
 
 	public QuizSubmissions() {
 
@@ -93,6 +100,14 @@ public class QuizSubmissions implements Serializable {
 
 	public void setBatch(String batch) {
 		this.batch = batch;
+	}
+
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
 	}
 	
 }

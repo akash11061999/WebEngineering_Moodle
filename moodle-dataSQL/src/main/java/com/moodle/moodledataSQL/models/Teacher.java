@@ -4,11 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,9 +32,12 @@ public class Teacher implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="teacherDeptId", nullable=false)
 	private Department department;
-
-	@ManyToMany(mappedBy = "teachers", fetch = FetchType.LAZY)
-	private Set<Subject> subjects = new HashSet<>();
+	
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
 
 	public Teacher() {
 
@@ -44,35 +50,11 @@ public class Teacher implements Serializable {
 		this.contactNo = contactNo;
 	}
 
-	public Set<Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
-	public void setTeacherId(String teacherId) {
-		this.teacherId = teacherId;
-	}
-
 	public String getTeacherId() {
 		return teacherId;
 	}
 
-	public String getteacherId() {
-		return teacherId;
-	}
-
-	public void setteacherId(String teacherId) {
+	public void setTeacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
 
@@ -98,6 +80,30 @@ public class Teacher implements Serializable {
 
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
 	}
 
 }

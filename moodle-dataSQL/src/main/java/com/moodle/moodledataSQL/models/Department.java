@@ -2,6 +2,7 @@ package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,31 +12,45 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Department implements Serializable {
 
 	@Id
+	@Column(updatable  = false)
 	private String departmentId;
 
-	@Column(nullable=false)  
+	@Column(nullable=false, unique = true)  
 	private String departmentName;
-	
-	@OneToMany(mappedBy = "department", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Set<Teacher> teachers;
-	
-	@OneToMany(mappedBy = "department", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Set<Student> students;
-	
-	@OneToMany(mappedBy = "department", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Set<Subject> subjects;
 
-//	@Column(name="creationDate", columnDefinition="DATE DEFAULT CURRENT_TIMESTAMP")  
-//	private Date creationDate;
-
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
+	
 	public Department() {
 		
 	}
 	
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
+	}
+
 	public Department (String departmentId, String departmentName) {
 		this.departmentId = departmentId;
 		this.departmentName = departmentName;
@@ -45,14 +60,6 @@ public class Department implements Serializable {
 		return departmentId;
 	}
 	
-	public Set<Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
-	}
-
 	public void setDepartmentId(String departmentId) {
 		this.departmentId = departmentId;
 	}
@@ -65,29 +72,4 @@ public class Department implements Serializable {
 		this.departmentName = departmentName;
 	}
 	
-	public Set<Teacher> getTeachers() {
-		return teachers;
-	}
-
-	public void setTeachers(Set<Teacher> teachers) {
-		this.teachers = teachers;
-	}
-	
-	public Set<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
-	
-//	public Date getCreationDate() {
-//		return creationDate;
-//	}
-//
-//	public void setCreationDate(Date creationDate) {
-//		this.creationDate = creationDate;
-//	}
-
-
 }

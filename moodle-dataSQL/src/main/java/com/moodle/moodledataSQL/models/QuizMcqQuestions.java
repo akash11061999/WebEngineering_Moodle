@@ -1,6 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,11 +13,15 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @IdClass(QuizMcqQuestionId.class)
 public class QuizMcqQuestions implements Serializable {
 
 	@Id
+	@Column(updatable = false)
 	private int mcqQuestionId;
 
 	@Id
@@ -48,8 +53,11 @@ public class QuizMcqQuestions implements Serializable {
 	@Column(nullable=false)
 	private String correctAns;
 
-	@Column(nullable=false)
-	private Date creationDate;
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
 
 	public Quiz getQuiz() {
 		return quiz;
@@ -63,7 +71,7 @@ public class QuizMcqQuestions implements Serializable {
 
 	}
 
-	public QuizMcqQuestions( int mcqQuestionId, String sectionName, int questionNo, String question, String optionA, String optionB, String optionC, String optionD, String correctAns, Date creationDate ) {
+	public QuizMcqQuestions( int mcqQuestionId, String sectionName, int questionNo, String question, String optionA, String optionB, String optionC, String optionD, String correctAns) {
 		this.mcqQuestionId = mcqQuestionId;
 		this.sectionName = sectionName;
 		this.questionNo = questionNo;
@@ -73,7 +81,6 @@ public class QuizMcqQuestions implements Serializable {
 		this.optionC = optionC;
 		this.optionD = optionD;
 		this.correctAns = correctAns;
-		this.creationDate = creationDate;
 	}
 	
 	public int getMcqQuestionId() {
@@ -148,16 +155,20 @@ public class QuizMcqQuestions implements Serializable {
 		this.correctAns = correctAns;
 	}
 
-	public Date getCreationDate() {
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
 	}
 
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
 
-
-
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
+	}
 
 }
