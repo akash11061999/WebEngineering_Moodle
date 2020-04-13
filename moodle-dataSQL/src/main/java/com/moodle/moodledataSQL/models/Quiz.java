@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Quiz extends Auditing implements Serializable {
+public class Quiz implements Serializable {
 	@Id
 	String quizId;
 

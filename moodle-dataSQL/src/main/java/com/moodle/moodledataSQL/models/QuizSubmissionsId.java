@@ -3,7 +3,7 @@ package com.moodle.moodledataSQL.models;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class QuizSubmissionsId extends Auditing implements Serializable {
+public class QuizSubmissionsId implements Serializable {
 
 	private Quiz quiz;
 	private Student student;

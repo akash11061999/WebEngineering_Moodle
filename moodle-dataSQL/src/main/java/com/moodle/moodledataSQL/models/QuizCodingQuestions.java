@@ -3,6 +3,7 @@ package com.moodle.moodledataSQL.models;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @IdClass(QuizCodingQuestionId.class)
-public class QuizCodingQuestions extends Auditing implements Serializable{
+public class QuizCodingQuestions implements Serializable{
 
 
 	@Id

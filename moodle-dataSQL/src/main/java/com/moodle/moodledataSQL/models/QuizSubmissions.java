@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @IdClass(QuizSubmissionsId.class)
-public class QuizSubmissions extends Auditing implements Serializable {
+public class QuizSubmissions implements Serializable {
 
 	@Id
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)

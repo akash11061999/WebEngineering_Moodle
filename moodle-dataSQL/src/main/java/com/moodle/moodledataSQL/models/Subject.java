@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Subject extends Auditing implements Serializable {
+public class Subject implements Serializable {
 
 	@Id
 	private String subjectId;

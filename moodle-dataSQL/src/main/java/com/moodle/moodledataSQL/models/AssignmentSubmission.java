@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table
 @Entity
 @IdClass(AssignmentSubmissionId.class)
-public class AssignmentSubmission extends Auditing implements Serializable {
+public class AssignmentSubmission implements Serializable {
 	
 	@Id
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)

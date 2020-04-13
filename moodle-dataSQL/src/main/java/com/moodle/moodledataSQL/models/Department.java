@@ -1,6 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Department extends Auditing implements Serializable {
+public class Department implements Serializable {
 
 	@Id
 	private String departmentId;
