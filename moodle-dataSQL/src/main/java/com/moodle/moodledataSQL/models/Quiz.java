@@ -2,6 +2,7 @@ package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
@@ -14,38 +15,46 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Quiz implements Serializable {
+	
 	@Id
-	String quizId;
+	@Column(updatable = false)
+	private String quizId;
 
-	@Column(nullable=false)
-	String name;
+	@Column(nullable=false, unique = true)
+	private String quizName;
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional = false)
-	@JoinColumn(name = "quizSubjectId",nullable=false)
-	public Subject subject;
+	@JoinColumn(name = "quizSubjectId", nullable = false)
+	private Subject subject;
 	
 	@Column(nullable=false)
-	String password;
+	private String password;
 	
 	@Column(nullable=false)
-	String batch;
+	private String batch;
 	
 	@Column(nullable=false)
-	Time startTime;
+	private Time startTime;
 	
 	@Column(nullable=false)
-	Time endTime;
+	private Time endTime;
 	
 	@Column(nullable=false)
-	Time duration;
+	private Time duration;
 	
 	@Column(nullable=false)
-	Date scheduledDate;
+	private Date scheduledDate;
 	
-	@Column(nullable=false)
-	Date creationDate;
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
 	
 	@OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<QuizMcqQuestions> quizMcqQuestions;
@@ -60,16 +69,15 @@ public class Quiz implements Serializable {
 		
 	}
 	
-	public Quiz(String quizId, String name, String password, String batch, Time startTime, Time endTime, Time duration, Date scheduledDate, Date creationDate) {
+	public Quiz(String quizId, String name, String password, String batch, Time startTime, Time endTime, Time duration, Date scheduledDate) {
 		this.quizId = quizId;
-		this.name = name;
+		this.quizName = name;
 		this.password = password;
 		this.batch = batch;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.duration = duration;
 		this.scheduledDate = scheduledDate;
-		this.creationDate = creationDate;
 	}
 	
 	public String getQuizId() {
@@ -104,20 +112,12 @@ public class Quiz implements Serializable {
 		this.quizSubmissions = quizSubmissions;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public Subject getSubject() {
 		return subject;
 	}
 
 	public void setSubject(Subject subject) {
 		this.subject = subject;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getPassword() {
@@ -168,12 +168,28 @@ public class Quiz implements Serializable {
 		this.scheduledDate = scheduledDate;
 	}
 
-	public Date getCreationDate() {
+	public String getQuizName() {
+		return quizName;
+	}
+
+	public void setQuizName(String quizName) {
+		this.quizName = quizName;
+	}
+
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
 	}
 
 }

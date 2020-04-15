@@ -4,6 +4,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,13 +13,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Resource implements Serializable {
 
 	@Id
+	@Column(updatable = false)
 	private String resourceId;
 
-	@Column(nullable=false)
+	@Column(nullable=false, unique = true)
 	private String resourceName;
 
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
@@ -30,6 +35,12 @@ public class Resource implements Serializable {
 
 	@Column(nullable=false)
 	private String resourceLink;
+	
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
 
 	public Resource() {
 
@@ -80,6 +91,22 @@ public class Resource implements Serializable {
 
 	public void setResourceLink(String resourceLink) {
 		this.resourceLink = resourceLink;
+	}
+
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
 	}
 
 }

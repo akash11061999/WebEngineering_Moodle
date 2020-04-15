@@ -1,7 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,10 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Subject implements Serializable {
@@ -33,70 +34,28 @@ public class Subject implements Serializable {
 	@Column(nullable=false)
 	private int intendedSemester;
 
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
 	@JoinColumn(name = "subjectDeptId",nullable=false)    
 	private Department department;
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinTable(name = "subjects_teachers",
-	joinColumns = { @JoinColumn(name = "subjectId", referencedColumnName = "subjectId", nullable = false, updatable = false)},
-	inverseJoinColumns = { @JoinColumn(name = "teacherId", referencedColumnName = "teacherId", nullable = false, updatable = false)})
-	private Set<Teacher> teachers = new HashSet<>();
-
-	@OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Quiz> quiz;
-
-	@OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Assignment> assignment;
-
-	@OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<QuizSubmissions> quizSubmissions;
-
-	@OneToMany(mappedBy = "subject", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Resource> resource;
+	
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
+	
 
 	public Subject() {
 
 	}
 
-	public Subject(String subjectId, String name, String description, int intendedYear, int intendedSemester) {
+	public Subject(String subjectId, String name, String description, int intendedYear, int intendedSemester, Department department) {
 		this.subjectId = subjectId;
 		this.name = name;
 		this.description = description;
 		this.intendedYear = intendedYear;
 		this.intendedSemester = intendedSemester;
-	}
-
-	public Set<Quiz> getQuiz() {
-		return quiz;
-	}
-
-	public void setQuiz(Set<Quiz> quiz) {
-		this.quiz = quiz;
-	}
-
-	public Set<Assignment> getAssignment() {
-		return assignment;
-	}
-
-	public void setAssignment(Set<Assignment> assignment) {
-		this.assignment = assignment;
-	}
-
-	public Set<QuizSubmissions> getQuizSubmissions() {
-		return quizSubmissions;
-	}
-
-	public void setQuizSubmissions(Set<QuizSubmissions> quizSubmissions) {
-		this.quizSubmissions = quizSubmissions;
-	}
-
-	public Set<Resource> getResource() {
-		return resource;
-	}
-
-	public void setResource(Set<Resource> resource) {
-		this.resource = resource;
+		this.department = department;
 	}
 
 	public String getSubjectId() {
@@ -105,14 +64,6 @@ public class Subject implements Serializable {
 
 	public void setSubjectId(String subjectId) {
 		this.subjectId = subjectId;
-	}
-
-	public Set<Teacher> getTeachers() {
-		return teachers;
-	}
-
-	public void setTeachers(Set<Teacher> teachers) {
-		this.teachers = teachers;
 	}
 
 	public String getName() {
@@ -154,6 +105,22 @@ public class Subject implements Serializable {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
 	}
 
 }

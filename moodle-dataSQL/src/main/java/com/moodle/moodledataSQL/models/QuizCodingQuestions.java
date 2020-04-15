@@ -1,6 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -12,15 +13,17 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @IdClass(QuizCodingQuestionId.class)
 public class QuizCodingQuestions implements Serializable{
 
 
 	@Id
+	@Column(updatable = false)
 	private int codingQuestionId;
-
-	// or both id+quiz  id will form composite primary key
 
 	@Id
 	@ManyToOne(fetch=FetchType.LAZY, optional = false)
@@ -53,14 +56,17 @@ public class QuizCodingQuestions implements Serializable{
 	@Column(nullable=false)
 	private String outputTestCases;
 
-	@Column(nullable=false)
-	private Date creationDate;
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
 
 	public QuizCodingQuestions() {
 
 	}
 	
-	public QuizCodingQuestions(int codingQuestionId, String sectionName, int questionNo, String question, String inputFormat, String outputFormat, String constraints, String inputTestCases, String outputTestCases, Date creationDate){ 
+	public QuizCodingQuestions(int codingQuestionId, String sectionName, int questionNo, String question, String inputFormat, String outputFormat, String constraints, String inputTestCases, String outputTestCases){ 
 		this.codingQuestionId = codingQuestionId;
 		this.sectionName = sectionName;
 		this.questionNo = questionNo;
@@ -70,15 +76,6 @@ public class QuizCodingQuestions implements Serializable{
 		this.constraints = constraints;
 		this.inputTestCases = inputTestCases;
 		this.outputTestCases = outputTestCases;
-		this.creationDate = creationDate;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
 	}
 
 	public Quiz getQuiz() {
@@ -184,9 +181,20 @@ public class QuizCodingQuestions implements Serializable{
 		this.outputTestCases = outputTestCases;
 	}
 
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
 
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
 
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
 
-
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
+	}
 
 }

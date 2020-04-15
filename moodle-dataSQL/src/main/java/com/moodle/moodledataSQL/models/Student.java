@@ -1,5 +1,7 @@
 package com.moodle.moodledataSQL.models;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,8 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
-public class Student {
+public class Student implements Serializable{
 
 	@Id
 	private String enrollmentNumber;
@@ -45,17 +50,17 @@ public class Student {
 	@JoinColumn(name = "studentDeptId",nullable=false)   
 	private Department department;
 
-	@OneToMany(mappedBy = "student", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Set<AssignmentSubmission> assignmentSubmission;
-
-	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<QuizSubmissions> quizSubmissions;
-
+	@CreationTimestamp  
+	private Timestamp creationDate;
+	
+	@UpdateTimestamp
+	private Timestamp updationDate;
+	
 	public Student() {
 
 	}
 
-	public Student(String enrollmentNumber, String name, String emailId, String contactNo, String branch, int year, int semester, String course, String batch) {
+	public Student(String enrollmentNumber, String name, String emailId, String contactNo, String branch, int year, int semester, String course, String batch, Department department) {
 		this.enrollmentNumber = enrollmentNumber;
 		this.name =  name;
 		this.emailId = emailId;
@@ -64,14 +69,7 @@ public class Student {
 		this.year = year;
 		this.semester = semester;
 		this.course = course;
-		this.batch = batch;		
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
+		this.batch = batch;	
 		this.department = department;
 	}
 
@@ -79,27 +77,11 @@ public class Student {
 		return enrollmentNumber;
 	}
 
-	public Set<AssignmentSubmission> getAssignmentSubmission() {
-		return assignmentSubmission;
-	}
-
-	public void setAssignmentSubmission(Set<AssignmentSubmission> assignmentSubmission) {
-		this.assignmentSubmission = assignmentSubmission;
-	}
-
-	public Set<QuizSubmissions> getQuizSubmissions() {
-		return quizSubmissions;
-	}
-
-	public void setQuizSubmissions(Set<QuizSubmissions> quizSubmissions) {
-		this.quizSubmissions = quizSubmissions;
-	}
-
 	public void setEnrollmentNumber(String enrollmentNumber) {
 		this.enrollmentNumber = enrollmentNumber;
 	}
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
 
@@ -161,6 +143,30 @@ public class Student {
 
 	public void setBatch(String batch) {
 		this.batch = batch;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public Timestamp getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Timestamp creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Timestamp getUpdationDate() {
+		return updationDate;
+	}
+
+	public void setUpdationDate(Timestamp updationDate) {
+		this.updationDate = updationDate;
 	}
 
 }

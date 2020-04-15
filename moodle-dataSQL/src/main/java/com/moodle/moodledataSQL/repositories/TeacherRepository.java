@@ -1,4 +1,4 @@
-package com.moodle.moodledataSQL.service;
+package com.moodle.moodledataSQL.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
