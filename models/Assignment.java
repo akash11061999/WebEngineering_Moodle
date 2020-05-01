@@ -66,21 +66,25 @@ public class Assignment implements Serializable {
 		
 	}
 	
-	public Assignment(String fileType, byte[] data, String assignmentId, String assignmentName, String batch, String resourceLink, Date submissionDeadline, boolean isActive) {
-		this.assignmentId = assignmentId;
+	
+	
+	
+	public Assignment(String assignmentName, String fileType, byte[] data, Subject subject, String batch,
+			String resourceLink, Date submissionDeadline, boolean isActive) {
+		
 		this.assignmentName = assignmentName;
+		this.fileType = fileType;
+		this.data = data;
+		this.subject = subject;
 		this.batch = batch;
 		this.resourceLink = resourceLink;
 		this.submissionDeadline = submissionDeadline;
 		this.isActive = isActive;
-		this.fileType = fileType;
-		this.data = data;
 	}
-	
-	public Assignment(String fileType, byte[] data) {
-        this.fileType = fileType;
-        this.data = data;
-    }
+
+
+
+
 	
 	public String getAssignmentId() {
 		return assignmentId;

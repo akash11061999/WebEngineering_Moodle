@@ -17,7 +17,8 @@ public class AssignmentFileStorageService {
 
 	@Autowired
 	private AssignmentFileStorageRepository assignmentFileStorageRepository; 
-
+ 
+	       //model name
 	public AssignmentFileStorage storeFile(MultipartFile file) {
 		// Normalize file name
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
